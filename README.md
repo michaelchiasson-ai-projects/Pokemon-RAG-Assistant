@@ -6,7 +6,7 @@ how RAG works end to end: ingestion, chunking, embedding, semantic retrieval,
 and grounded generation with citations.
 
 The more important outcome than the tool itself was learning **when RAG is and
-isn't the right approach** — see Reflections below.
+isn't the right approach** (see Reflections below).
 
 ## What it does
 
@@ -77,7 +77,7 @@ Testing surfaced real boundaries, which were the most instructive part:
 - **No reasoning over missing data.** Questions like "which Pokémon has the
   largest stat change across its evolution" can't be answered, because
   evolution-chain relationships were never ingested. No top-k setting fixes a
-  missing-data problem — though the system fails honestly rather than inventing.
+  missing-data problem, though the system fails honestly rather than inventing.
 - **Retrieval finds topical similarity, not logical answers.** Asked "best
   Pokémon for a grass gym," it retrieved Pokémon *about* grass (including Grass
   types that would lose) rather than Pokémon that *beat* grass. Embeddings match
@@ -96,14 +96,14 @@ model's training knowledge, so a production tool would be better served by the
 model's own knowledge plus a web-search tool, with far less engineering.
 
 RAG earns its place when data is **private, rapidly changing, or requires
-auditable citations** — none of which Pokémon needs. Building this made the
+auditable citations**, which is something that Pokemon doesn't need. Building this made the
 distinction concrete: the reflexive reach for RAG is a common and expensive
 over-engineering mistake, and the real skill is knowing when a simpler approach
 wins.
 
 Pokémon was nonetheless the right choice *for learning*, precisely because I
 know the domain well enough to immediately judge when retrieval returned
-something wrong — which is exactly what made the failures above visible.
+something wrong, which is exactly what made the failures above visible.
 
 ## Running it
 pip install anthropic chromadb requests python-dotenv
